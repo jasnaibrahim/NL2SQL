@@ -1,0 +1,12 @@
+langchain
+langchain_community
+langchain_groq
+psycopg2-binary
+qdrant-client
+fastapi
+uvicorn
+python-dotenv
+langchain_qdrant
+ipykernel
+
+-e .
