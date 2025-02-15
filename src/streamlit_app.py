@@ -40,4 +40,4 @@ for msg in st.session_state["messages"]:
 # Button to clear chat history
 if st.button("🗑️ Clear Chat History"):
     st.session_state["messages"] = []
-    st.experimental_rerun()
+    st.rerun()

@@ -17,7 +17,7 @@ llm = ChatGroq(
 @st.cache_data
 def get_table_details():
     # Read the CSV file into a DataFrame
-    table_description = pd.read_csv("table_desc.csv")
+    table_description = pd.read_csv("/home/hp/Pictures/NL2SQL/src/table_desc.csv")
 
     # Iterate over the DataFrame rows to create Document objects
     table_details = ""

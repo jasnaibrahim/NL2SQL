@@ -37,5 +37,17 @@ def invoke_chain(question, messages):
             history.add_user_message(message["content"])
         else:
             history.add_ai_message(message["content"])
+    
     response = chain.invoke({"question": question, "top_k": 3, "messages": history.messages})
-    return response
+    return response  # ✅ Now returning the response
+
+# if __name__ == "__main__":
+#     test_question = "How many customers placed an order last month?"
+#     test_messages = [{"role": "user", "content": test_question}]
+    
+#     try:
+#         response = invoke_chain(test_question, test_messages)
+#         print("Response:", response)  # ✅ This should now print the actual response
+#     except Exception as e:
+#         print(f"Error in langchain_utils: {str(e)}")
+

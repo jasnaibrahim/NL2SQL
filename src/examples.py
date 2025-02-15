@@ -14,7 +14,7 @@ def get_example_selector():
     examples = [
     {
         "input": "List all customers in France with a credit limit over 20,000.",
-        "query": "SELECT * FROM customers WHERE country = 'France' AND creditLimit > 20000;"
+        "query": "SELECT * FROM customers WHERE country = 'France' AND creditlimit > 20000;"
     },
     {
         "input": "Get the highest payment amount made by any customer.",
@@ -22,19 +22,19 @@ def get_example_selector():
     },
     {
         "input": "Show product details for products in the 'Motorcycles' product line.",
-        "query": "SELECT * FROM products WHERE productLine = 'Motorcycles';"
+        "query": "SELECT * FROM products WHERE productline = 'Motorcycles';"
     },
     {
         "input": "Retrieve the names of employees who report to employee number 1002.",
-        "query": "SELECT firstName, lastName FROM employees WHERE reportsTo = 1002;"
+        "query": "SELECT firstname, lastname FROM employees WHERE reportsto = 1002;"
     },
     {
         "input": "List all products with a stock quantity less than 7000.",
-        "query": "SELECT productName, quantityInStock FROM products WHERE quantityInStock < 7000;"
+        "query": "SELECT productname, quantityinstock FROM products WHERE quantityinstock < 7000;"
     },
     {
-     'input':"what is price of `1968 Ford Mustang`",
-     "query": "SELECT `buyPrice`, `MSRP` FROM products  WHERE `productName` = '1968 Ford Mustang' LIMIT 1;"   
+        "input": "What is the price of '1968 Ford Mustang'?",
+        "query": "SELECT buyprice, msrp FROM products WHERE productname = '1968 Ford Mustang' FETCH FIRST 1 ROW ONLY;"   
     }
 ]
 
@@ -49,3 +49,17 @@ def get_example_selector():
     )
 
     return example_selector  
+# if __name__ == "__main__":
+#     try:
+#         example_selector = get_example_selector()
+#         test_query = "Find all customers in Germany with high credit limits."
+#         retrieved_examples = example_selector.select_examples({"input": test_query})
+
+#         print("✅ Example Selector Initialized Successfully!")
+#         print("🔍 Test Query:", test_query)
+#         print("📌 Retrieved Similar Examples:")
+#         for example in retrieved_examples:
+#             print(f" - Input: {example['input']}\n   Query: {example['query']}\n")
+
+#     except Exception as e:
+#         print("❌ Error:", str(e))

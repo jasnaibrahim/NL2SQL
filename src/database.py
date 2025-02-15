@@ -11,4 +11,5 @@ def get_database():
         print(f"Database connection failed: {str(e)}")
         exit()
 
+
     
