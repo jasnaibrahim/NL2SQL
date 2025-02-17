@@ -13,28 +13,48 @@ def get_example_selector():
     # Define all example SQL queries
     examples = [
     {
-        "input": "List all customers in France with a credit limit over 20,000.",
-        "query": "SELECT * FROM customers WHERE country = 'France' AND creditlimit > 20000;"
+        "input": "List all employees working in the 'New York' office.",
+        "query": "SELECT firstName, lastName FROM employees WHERE officeCode = (SELECT officeCode FROM offices WHERE city = 'New York');"
     },
     {
-        "input": "Get the highest payment amount made by any customer.",
-        "query": "SELECT MAX(amount) FROM payments;"
+        "input": "Find the total number of customers in France.",
+        "query": "SELECT COUNT(*) FROM customers WHERE country = 'France';"
     },
     {
-        "input": "Show product details for products in the 'Motorcycles' product line.",
-        "query": "SELECT * FROM products WHERE productline = 'Motorcycles';"
+        "input": "Get the total revenue generated from all payments.",
+        "query": "SELECT SUM(amount) FROM payments;"
     },
     {
-        "input": "Retrieve the names of employees who report to employee number 1002.",
-        "query": "SELECT firstname, lastname FROM employees WHERE reportsto = 1002;"
+        "input": "Retrieve the names of customers who placed an order in 2024.",
+        "query": "SELECT DISTINCT c.customerName FROM customers c JOIN orders o ON c.customerNumber = o.customerNumber WHERE EXTRACT(YEAR FROM o.orderDate) = 2024;"
     },
     {
-        "input": "List all products with a stock quantity less than 7000.",
-        "query": "SELECT productname, quantityinstock FROM products WHERE quantityinstock < 7000;"
+        "input": "Find the total number of products in stock across all categories.",
+        "query": "SELECT SUM(quantityInStock) FROM products;"
     },
     {
-        "input": "What is the price of '1968 Ford Mustang'?",
-        "query": "SELECT buyprice, msrp FROM products WHERE productname = '1968 Ford Mustang' FETCH FIRST 1 ROW ONLY;"   
+        "input": "Show the most expensive product in the database.",
+        "query": "SELECT productName, buyPrice FROM products ORDER BY buyPrice DESC LIMIT 1;"
+    },
+    {
+        "input": "Get details of pending orders.",
+        "query": "SELECT * FROM orders WHERE status = 'Pending';"
+    },
+    {
+        "input": "List all customers handled by 'Jane Doe'.",
+        "query": "SELECT customerName FROM customers WHERE salesRepEmployeeNumber = (SELECT employeeNumber FROM employees WHERE firstName = 'Jane' AND lastName = 'Doe');"
+    },
+    {
+        "input": "Find the top 3 customers with the highest credit limit.",
+        "query": "SELECT customerName, creditLimit FROM customers ORDER BY creditLimit DESC LIMIT 3;"
+    },
+    {
+        "input": "Show product details for items in the 'Trains' product line.",
+        "query": "SELECT * FROM products WHERE productLine = 'Trains';"
+    },
+    {
+        "input": "Retrieve the total quantity of '1969 Ford Mustang' sold.",
+        "query": "SELECT SUM(quantityOrdered) FROM orderdetails WHERE productCode = 'S10_1678';"
     }
 ]
 
